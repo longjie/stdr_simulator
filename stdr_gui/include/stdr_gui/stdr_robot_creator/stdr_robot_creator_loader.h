@@ -32,6 +32,7 @@
 #include "stdr_gui/stdr_robot_creator/stdr_robot_footprint_loader.h"
 #include "stdr_gui/stdr_robot_creator/stdr_sonar_properties_loader.h"
 #include "stdr_gui/stdr_robot_creator/stdr_laser_properties_loader.h"
+#include "stdr_gui/stdr_robot_creator/stdr_bumper_properties_loader.h"
 #include "stdr_gui/stdr_tools.h"
 
 /**
@@ -63,6 +64,7 @@ namespace stdr_gui
       std::vector<QTreeWidgetItem> co2_sensors;
       std::vector<QTreeWidgetItem> thermal_sensors;
       std::vector<QTreeWidgetItem> sound_sensors;
+      std::vector<QTreeWidgetItem> bumper_sensors;
       
       //!< Tree item for the robot
       QTreeWidgetItem robotNode;
@@ -75,6 +77,7 @@ namespace stdr_gui
       QTreeWidgetItem co2SensorsNode;
       QTreeWidgetItem thermalSensorsNode;
       QTreeWidgetItem soundSensorsNode;
+      QTreeWidgetItem bumpersNode;
       //!< Tree item for the kinematic
       QTreeWidgetItem kinematicNode;
       //!< Tree item for the robot orientation
@@ -109,6 +112,8 @@ namespace stdr_gui
       CLaserPropertiesLoader laserPropLoader;
       //!< Object of sonar properties widget
       CSonarPropertiesLoader sonarPropLoader;
+      //!< Object of bumper properties widget
+      CBumperPropertiesLoader bumperPropLoader;
       //!< Object of robot kinematic properties widget
       CKinematicPropertiesLoader kinematicPropLoader;
       //!< Object of rfid antenna properties widget

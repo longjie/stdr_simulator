@@ -30,6 +30,7 @@ namespace stdr_gui
   int CRobotCreatorConnector::co2_sensors_number = -1;
   int CRobotCreatorConnector::thermal_sensors_number = -1;
   int CRobotCreatorConnector::sound_sensors_number = -1;
+  int CRobotCreatorConnector::bumper_number = -1;
   
   /**
   @brief Default contructor
@@ -339,6 +340,11 @@ namespace stdr_gui
     if(item == &loader_.soundSensorsNode && column == 2)
     {
       addSoundSensor();
+    }  
+    //!< Add a bumper sensor
+    if(item == &loader_.bumpersNode && column == 2)
+    {
+      addBumper();
     }  
     //!< Erase a sonar
     if(item->parent() == &loader_.sonarsNode && column == 2)
@@ -1245,6 +1251,74 @@ namespace stdr_gui
     loader_.soundSensorsNode.setExpanded(true);
     updateRobotPreview();
   }
+
+  /**
+  @brief Adds a bumper sensor in the new robot 
+  @return void
+  **/
+  void CRobotCreatorConnector::addBumper(void)
+  {
+    QString bumperFrameId = 
+      QString("bumper_") + 
+      QString().setNum(++CRobotCreatorConnector::bumper_number);
+    
+    stdr_msgs::BumperSensorMsg bmsg;
+    bmsg.frame_id = bumperFrameId.toStdString();
+    bmsg.radius = 0.3;
+    bmsg.contactAngle = 0.3;
+    bmsg.pose.x = 0;
+    bmsg.pose.y = 0;
+    bmsg.pose.theta = 0;
+    bmsg.frequency = 10;
+    
+    new_robot_msg_.bumperSensors.push_back(bmsg);
+    
+    QTreeWidgetItem  *snode;
+    snode = new QTreeWidgetItem();
+    snode->setText(0,bumperFrameId);
+    snode->setIcon(1,loader_.editIcon);
+    snode->setIcon(2,loader_.removeIcon);
+    snode->setIcon(3,loader_.saveIcon);
+    snode->setIcon(4,loader_.loadIcon);
+
+    QTreeWidgetItem 
+      *radius,
+      *orientation,
+      *poseX,
+      *poseY,
+      *frequency;
+      
+    radius = new QTreeWidgetItem();
+    poseX = new QTreeWidgetItem();
+    poseY = new QTreeWidgetItem();
+    orientation = new QTreeWidgetItem();
+    frequency = new QTreeWidgetItem();
+    
+    radius->setText(0,QString("Radius"));
+    poseX->setText(0,QString("Pose - x"));
+    poseY->setText(0,QString("Pose - y"));
+    orientation->setText(0,QString("Orientation"));
+    frequency->setText(0,QString("Frequency"));
+    
+    radius->setText(1,QString().setNum(bmsg.radius));
+    poseX->setText(1,QString().setNum(bmsg.pose.x));
+    poseY->setText(1,QString().setNum(bmsg.pose.y));
+    orientation->setText(1,QString().setNum(bmsg.pose.theta));
+    frequency->setText(1,QString().setNum(bmsg.frequency));
+    
+    snode->addChild(radius);
+    snode->addChild(poseX);
+    snode->addChild(poseY);
+    snode->addChild(orientation);
+    snode->addChild(frequency);
+    
+    loader_.bumpersNode.addChild(snode);
+    
+    snode->setExpanded(false);
+    loader_.bumpersNode.setExpanded(true);
+    updateRobotPreview();
+  }
+
   
   /**
   @brief Adds an rfid antenna sensor in the new robot 

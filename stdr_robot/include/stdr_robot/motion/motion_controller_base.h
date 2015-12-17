@@ -91,6 +91,14 @@ namespace stdr_robot {
       }
 
       /**
+      @brief Set the current velocity of the motion controller
+      */
+      inline void setVelocity(geometry_msgs::Twist twist) {
+        _currentTwist = twist;
+      }
+
+
+      /**
       @brief Default desctructor
       @return void
       **/

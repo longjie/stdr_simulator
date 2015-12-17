@@ -39,6 +39,7 @@ namespace stdr_gui
     co2SensorPropLoader(argc,argv),
     thermalSensorPropLoader(argc,argv),
     soundSensorPropLoader(argc,argv),
+    bumperPropLoader(argc,argv),
     argc_(argc),
     argv_(argv)
   {
@@ -106,6 +107,7 @@ namespace stdr_gui
     co2SensorsNode.setText(0,"CO2 sensors");
     thermalSensorsNode.setText(0,"Thermal sensors");
     soundSensorsNode.setText(0,"Sound sensors");
+    bumpersNode.setText(0,"Bumper sensors");
     //~ kinematicNode.setText(0,"Kinematic");
     
     robotNode.setIcon(2,editIcon);
@@ -117,6 +119,7 @@ namespace stdr_gui
     co2SensorsNode.setIcon(2,addIcon);
     thermalSensorsNode.setIcon(2,addIcon);
     soundSensorsNode.setIcon(2,addIcon);
+    bumpersNode.setIcon(2,addIcon);
     //~ kinematicNode.setIcon(2,editIcon);
     
     robotTreeWidget->addTopLevelItem(&robotNode);
@@ -126,6 +129,7 @@ namespace stdr_gui
     robotTreeWidget->addTopLevelItem(&co2SensorsNode);
     robotTreeWidget->addTopLevelItem(&thermalSensorsNode);
     robotTreeWidget->addTopLevelItem(&soundSensorsNode);
+    robotTreeWidget->addTopLevelItem(&bumpersNode);
     //~ robotTreeWidget->addTopLevelItem(&kinematicNode);
 
     robotInfoOrientation.setText(0,"Orientation");
@@ -145,6 +149,7 @@ namespace stdr_gui
     co2SensorsNode.setExpanded(true);
     thermalSensorsNode.setExpanded(true);
     soundSensorsNode.setExpanded(true);
+    bumpersNode.setExpanded(true);
     //~ kinematicNode.setExpanded(true);
     
     robotTreeWidget->resizeColumnToContents(0);

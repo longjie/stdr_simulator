@@ -96,6 +96,7 @@ namespace stdr_gui
       static int co2_sensors_number;
       static int thermal_sensors_number;
       static int sound_sensors_number;
+      static int bumper_number;
     
       /**
       @brief Default contructor
@@ -299,7 +300,8 @@ namespace stdr_gui
       void addCO2Sensor(void);
       void addThermalSensor(void);
       void addSoundSensor(void);
-      
+      void addBumper(void);
+
       /**
       @brief Adds an rfid antenna sensor in the new robot 
       @param rmsg [stdr_msgs::RfidSensorMsg] The rfid antenna sensor message

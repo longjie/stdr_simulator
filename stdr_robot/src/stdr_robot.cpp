@@ -410,6 +410,8 @@ namespace stdr_robot
     else
     {
       _motionControllerPtr->setPose(_previousPose);
+      geometry_msgs::Twist twist;
+      _motionControllerPtr->setVelocity(twist);
     }
     //!< Robot tf
     tf::Vector3 translation(_previousPose.x, _previousPose.y, 0);

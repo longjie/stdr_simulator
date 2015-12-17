@@ -64,6 +64,7 @@ set(QT_FORMS
   ui/simulator.ui               ui/sonarProperties.ui
   ui/sonarVisualization.ui      ui/co2SensorProperties.ui
   ui/thermalSensorProperties.ui ui/soundSensorProperties.ui
+  ui/bumperProperties.ui
 )
 
 QT4_WRAP_UI(QT_FORMS_HPP ${QT_FORMS})
@@ -99,6 +100,7 @@ add_executable(stdr_gui_node
   src/stdr_gui/stdr_robot_creator/stdr_co2_sensor_properties_loader.cpp
   src/stdr_gui/stdr_robot_creator/stdr_thermal_sensor_properties_loader.cpp
   src/stdr_gui/stdr_robot_creator/stdr_sound_sensor_properties_loader.cpp
+  src/stdr_gui/stdr_robot_creator/stdr_bumper_properties_loader.cpp
   src/stdr_gui/stdr_robot_creator/stdr_robot_creator_loader.cpp
   src/stdr_gui/stdr_robot_creator/stdr_robot_creator_connector.cpp
   src/stdr_gui/stdr_gui_sensors/stdr_gui_robot.cpp
